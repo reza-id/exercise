@@ -5,6 +5,21 @@ import android.os.Bundle;
 import android.view.Menu;
 
 public class MainListActivity extends ListActivity {
+	
+	protected String[] mAndroidNames = {
+			"Android Beta",
+			"Android 1.0",
+			"Android 1.1",
+			"Cupcake",
+			"Donut",
+			"Eclair",
+			"Froyo",
+			"Gingerbread",
+			"Honeycomb",
+			"Ice Cream Sandwich",
+			"Jelly Bean",
+			"Kitkat"
+	};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
