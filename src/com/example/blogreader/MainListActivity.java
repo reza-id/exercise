@@ -1,10 +1,10 @@
 package com.example.blogreader;
 
+import android.app.ListActivity;
 import android.os.Bundle;
-import android.app.Activity;
 import android.view.Menu;
 
-public class MainListActivity extends Activity {
+public class MainListActivity extends ListActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
