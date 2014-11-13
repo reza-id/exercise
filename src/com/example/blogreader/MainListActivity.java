@@ -1,14 +1,14 @@
 package com.example.blogreader;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 import android.app.ListActivity;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.widget.ArrayAdapter;
 
 public class MainListActivity extends ListActivity {
 	
@@ -23,7 +23,14 @@ public class MainListActivity extends ListActivity {
 		
 		try {
 			URL blogFeedUrl = new URL("http://blog.teamtreehouse.com/api/get_recent_summary/?count=20");
+			HttpURLConnection connection = (HttpURLConnection) blogFeedUrl.openConnection();
+			connection.connect();
+			
+			int responseCode = connection.getResponseCode();
+			Log.i(TAG, "Code: " + responseCode);
 		} catch (MalformedURLException e) {
+			Log.e(TAG, "Exception caught: ", e);
+		} catch (IOException e) {
 			Log.e(TAG, "Exception caught: ", e);
 		}
 		
