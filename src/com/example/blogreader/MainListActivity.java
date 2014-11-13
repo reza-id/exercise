@@ -3,7 +3,7 @@ package com.example.blogreader;
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.Menu;
-import android.widget.Toast;
+import android.widget.ArrayAdapter;
 
 public class MainListActivity extends ListActivity {
 	
@@ -27,11 +27,10 @@ public class MainListActivity extends ListActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_list);
 		
-//		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mAndroidNames);
-//		setListAdapter(adapter);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mAndroidNames);
+		setListAdapter(adapter);
 		
-		String message = getString(R.string.no_items);
-		Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+//		Toast.makeText(this, getString(R.string.no_items), Toast.LENGTH_LONG).show();
 	}
 
 	@Override
