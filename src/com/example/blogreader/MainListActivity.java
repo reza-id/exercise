@@ -36,6 +36,9 @@ public class MainListActivity extends ListActivity {
 	public static final String TAG = MainListActivity.class.getSimpleName();
 	protected JSONObject mBlogData;
 	protected ProgressBar mProgressBar;
+	
+	private final String KEY_TITLE = "title";
+	private final String KEY_AUTHOR = "author";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -87,14 +90,14 @@ public class MainListActivity extends ListActivity {
 						new ArrayList<HashMap<String, String>>();
 				for(int i=0; i < jsonPosts.length(); i++) {
 					JSONObject post = jsonPosts.getJSONObject(i);
-					String title = post.getString("title");
+					String title = post.getString(KEY_TITLE);
 					title = Html.fromHtml(title).toString();
-					String author = post.getString("author");
+					String author = post.getString(KEY_AUTHOR);
 					author = Html.fromHtml(author).toString();
 					
 					HashMap<String, String> blogPost = new HashMap<String, String>();
-					blogPost.put("title", title);
-					blogPost.put("author", author);
+					blogPost.put(KEY_TITLE, title);
+					blogPost.put(KEY_AUTHOR, author);
 					
 					blogPosts.add(blogPost);
 					
