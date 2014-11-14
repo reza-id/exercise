@@ -77,15 +77,7 @@ public class MainListActivity extends ListActivity {
 	private void updateList() {
 		mProgressBar.setVisibility(View.INVISIBLE);
 		if(mBlogData == null){
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setTitle(getString(R.string.dialog_title));
-			builder.setMessage(getString(R.string.dialog_body));
-			builder.setPositiveButton(android.R.string.ok, null);
-			AlertDialog dialog = builder.create();
-			dialog.show();
-			
-			TextView emptyTextView = (TextView) getListView().getEmptyView();
-			emptyTextView.setText(getString(R.string.no_items));
+			updateDisplayForError();
 		}
 		else {
 			try {
@@ -105,6 +97,18 @@ public class MainListActivity extends ListActivity {
 				Log.e(TAG, "Exception caught!", e);
 			}
 		}
+	}
+
+	private void updateDisplayForError() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle(getString(R.string.dialog_title));
+		builder.setMessage(getString(R.string.dialog_body));
+		builder.setPositiveButton(android.R.string.ok, null);
+		AlertDialog dialog = builder.create();
+		dialog.show();
+		
+		TextView emptyTextView = (TextView) getListView().getEmptyView();
+		emptyTextView.setText(getString(R.string.no_items));
 	}
 	
 	private class GetBlogPostsTask extends AsyncTask<Object, Void, JSONObject> {
