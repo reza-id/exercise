@@ -63,6 +63,19 @@ public class MainListActivity extends ListActivity {
 		getMenuInflater().inflate(R.menu.main_list, menu);
 		return true;
 	}
+
+	private void updateList() {
+		if(mBlogData == null){
+			// TODO: Handle error
+		}
+		else {
+			try {
+				Log.d(TAG, mBlogData.toString(2));
+			} catch (JSONException e) {
+				Log.e(TAG, "Exception caught!", e);
+			}
+		}
+	}
 	
 	private class GetBlogPostsTask extends AsyncTask<Object, Void, JSONObject> {
 
@@ -101,8 +114,8 @@ public class MainListActivity extends ListActivity {
 
 		@Override
 		protected void onPostExecute(JSONObject result) {
-			// TODO Auto-generated method stub
-			super.onPostExecute(result);
+			mBlogData = result;
+			updateList();
 		}
 	}
 
