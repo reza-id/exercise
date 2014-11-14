@@ -27,6 +27,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -103,8 +104,10 @@ public class MainListActivity extends ListActivity {
 					
 				}
 				
-				ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, 
-						android.R.layout.simple_list_item_1, mBlogPostTitles);
+				String[] keys = {KEY_TITLE, KEY_AUTHOR};
+				int[] ids = {android.R.id.text1, android.R.id.text2};
+				SimpleAdapter adapter = new SimpleAdapter(this, blogPosts, 
+						android.R.layout.simple_list_item_2, keys, ids);
 				setListAdapter(adapter);
 			} catch (JSONException e) {
 				Log.e(TAG, "Exception caught!", e);
