@@ -18,8 +18,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 public class MainListActivity extends ListActivity {
@@ -75,8 +77,13 @@ public class MainListActivity extends ListActivity {
 				for(int i=0; i < jsonPosts.length(); i++) {
 					JSONObject post = jsonPosts.getJSONObject(i);
 					String title = post.getString("title");
+					title = Html.fromHtml(title).toString();
 					mBlogPostTitles[i] = title;
 				}
+				
+				ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, 
+						android.R.layout.simple_list_item_1, mBlogPostTitles);
+				setListAdapter(adapter);
 			} catch (JSONException e) {
 				Log.e(TAG, "Exception caught!", e);
 			}
