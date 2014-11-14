@@ -20,5 +20,7 @@
         <item>Jelly Bean</item>
         <item>Kitkat</item>
     </string-array>
+    <string name="dialog_title">Ooops! Sorry!</string>
+    <string name="dialog_body">There was an error getting data from the blog...</string>
 
 </resources>
